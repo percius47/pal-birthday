@@ -20,7 +20,7 @@
   text-align: center;
   padding: 1.5rem 1rem;
   margin-bottom: 2rem;
-
+border-bottom: var(--secondary-color) 1px solid;
 }
 
 .about{
@@ -38,6 +38,11 @@ background-color: var(--primary-color);
 }
 .about p strong{
   display: block;
+}
+
+.about p{
+  width: 50%;
+  margin: 0 auto;
 }
 
 .about input{
@@ -75,10 +80,12 @@ color: var(--secondary-color);
 
 /* Footer */
 .footer{
-  height: 14vh;
+  height: 15vh;
   background-color:var(--primary-color);
 position: relative;
 color: white;
+margin-top: 10rem;
+border-top: var(--secondary-color) 1px solid;
 }
 
 .links{
@@ -114,8 +121,8 @@ font-size: 1.2rem;
   display: block;
   position: absolute;
  width: auto;
-right: 2%;
-bottom: 2%;
- font-size: 0.8rem;
+right: 3%;
+bottom: 6%;
+ font-size: 0.5rem;
 
 }

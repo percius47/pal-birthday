@@ -13,6 +13,7 @@ const App = () => {
 
   const [output, setOutput] = useState("");
   const [Img, setImg]=useState("");
+  const [showOut,setShowOut]=useState("none");
   function inputDateHandler(e) {
     if (date) {
       setImg("");
@@ -178,7 +179,7 @@ const App = () => {
           This app checks your birthdate in 4 formats{" "}
           <i>yyyy-mm-dd, dd-mm-yyyy, mm-dd-yy, m-dd-yyyy</i>
           <br /> e.g. if your birthdate is 01 Aug 1995, then app will check for
-          19950801, 01081995, 080195, 1081995
+          19950801, 01081995, 080195, 8101995
         </p>
         <input
           onChange={(e) => {
@@ -191,13 +192,20 @@ const App = () => {
           required
         />
         <button
-          onClick={inputDateHandler}
+          onClick={(e)=>{
+            inputDateHandler(e);
+            setShowOut("block");
+          }
+          
+          }
          
           className="linkPrimary"
         >
           check
         </button>
-        <div className="out">{Img}{output}</div>
+        <div className="out"
+      style={{display:`${showOut}`}}
+        >{Img}{output}</div>
       </section>
  {/* Footer */}
  <div className="footer">
