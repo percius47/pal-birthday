@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
-import double from "./logo.svg";
-
-
+import double from "./tenor.gif";
+import happy from "./happy.gif";
+import sad from "./sad.gif";
 
 let date;
 let newoutput = "";
@@ -12,14 +12,21 @@ const datesInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const App = () => {
 
   const [output, setOutput] = useState("");
-
+  const [Img, setImg]=useState("");
   function inputDateHandler(e) {
     if (date) {
-      setOutput(<img style={{height:"10px", width:"10px"}} src={double} alt="loading gif"></img>);
+      setImg("");
+      setOutput(
+      <div>
+      <img style={{height:"10rem", width:"13rem",display:"block", marginLeft:"auto",marginRight:"auto", textAlign:"center",marginBottom:"1rem"}} src={double} alt="loading gif"></img>
+      <h4><i>Dont rush me, I'm crunching numbers!!</i></h4>
+      </div>
+      );
       setTimeout(() => {
         checkPalindrome();
       }, 3000);
     } else {
+     
       setOutput(<p>Please fill date field.</p>);
     }
   }
@@ -31,11 +38,23 @@ const App = () => {
     const inputDate = dateArray[2];
     let setFlag = checkAllCombi(inputYear, inputMonth, inputDate);
     if (setFlag) {
-      newoutput = `Whoa!!! Your birthdate in format ${setFlag} is palindrome`;
+      newoutput = `Whoa!!! Your birthdate in format ${setFlag} is palindrome.`;
     } else {
       let [nextdate, diff] = findNextDate(inputDate, inputMonth, inputYear);
-      newoutput = `Awww! Your birthdate is not palindrome. Nearest palindrome date is ${nextdate} You missed it by ${diff} days.`;
+      newoutput = `Oops! Your birthdate is not palindrome. Nearest palindrome date is ${nextdate}. You missed it by ${diff} days.`;
     }
+    if(setFlag)
+    {
+      setImg(<img src={happy} alt=""
+      style={{height:"10rem", width:"13rem",display:"block", marginLeft:"auto",marginRight:"auto", textAlign:"center",marginBottom:"1rem"}}
+      />);
+    }
+    else{
+      setImg(<img src={sad} alt=""
+      style={{height:"10rem", width:"13rem",display:"block", marginLeft:"auto",marginRight:"auto", textAlign:"center",marginBottom:"1rem"}}
+      />)
+    }
+    
     setOutput(
       <p >
         {newoutput}
@@ -145,13 +164,17 @@ const App = () => {
 
   return (
     <div className="App">
-      
-      <section id="mainSection">
+      <div className="head">
+        <h1>Palindrome Birthdays!! 🥳</h1>
+      </div>
+      <section className="about">
+        
         <h2>
-          Enter your birthdate and we will tell you if your birthdate is a
-          palindrome date or Not!
+          About
         </h2>
         <p style={{ fontSize: "1rem" }}>
+          <strong>Enter your birthdate and we will tell you if your birthdate is a
+          palindrome date or not.</strong>
           This app checks your birthdate in 4 formats{" "}
           <i>yyyy-mm-dd, dd-mm-yyyy, mm-dd-yy, m-dd-yyyy</i>
           <br /> e.g. if your birthdate is 01 Aug 1995, then app will check for
@@ -174,8 +197,19 @@ const App = () => {
         >
           check
         </button>
-        <div>{output}</div>
+        <div className="out">{Img}{output}</div>
       </section>
+ {/* Footer */}
+ <div className="footer">
+          <div className="links">
+          <a className="linkedIn" href="https://linkedin.com/in/prashantworks47">LinkedIn</a>
+          <a className="twitter" href="https://twitter.com/percius25">Twitter</a>
+          <a className="twitter" href="https://github.com/percius47">Github</a>
+          
+           </div>
+          <small> Copyright. 2021 </small> 
+        </div>
+      
           </div>
   );
 };
