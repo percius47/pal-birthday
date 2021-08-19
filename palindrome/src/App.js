@@ -7,7 +7,7 @@ import sad from "./sad.gif";
 let date;
 let newoutput = "";
 const datesInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-//highlightTheme=[darktheme, lighttheme]
+
 
 const App = () => {
 
